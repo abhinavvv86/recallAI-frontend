@@ -16,7 +16,8 @@ function StudyProgressPanel({ dashboard }) {
 
   const masteryBuckets = {
     weak: concepts.filter(
-      (concept) => Number(concept.masteryLevel || 0) < 40
+      (concept) =>
+        Number(concept.masteryLevel || 0) < 40
     ).length,
 
     developing: concepts.filter(
@@ -26,7 +27,8 @@ function StudyProgressPanel({ dashboard }) {
     ).length,
 
     strong: concepts.filter(
-      (concept) => Number(concept.masteryLevel || 0) >= 70
+      (concept) =>
+        Number(concept.masteryLevel || 0) >= 70
     ).length
   }
 
@@ -76,6 +78,7 @@ function StudyProgressPanel({ dashboard }) {
       <div className="section-title">
 
         <div>
+
           <p className="eyebrow">
             LEARNING ANALYTICS
           </p>
@@ -88,6 +91,7 @@ function StudyProgressPanel({ dashboard }) {
             Track your concept mastery, quiz performance,
             and areas that need more attention.
           </p>
+
         </div>
 
       </div>
@@ -105,6 +109,7 @@ function StudyProgressPanel({ dashboard }) {
           </strong>
 
           <div className="progress-stat-bar">
+
             <div
               style={{
                 width: `${Math.min(
@@ -113,6 +118,7 @@ function StudyProgressPanel({ dashboard }) {
                 )}%`
               }}
             ></div>
+
           </div>
 
         </div>
@@ -128,6 +134,7 @@ function StudyProgressPanel({ dashboard }) {
           </strong>
 
           <div className="progress-stat-bar">
+
             <div
               style={{
                 width: `${Math.min(
@@ -136,6 +143,7 @@ function StudyProgressPanel({ dashboard }) {
                 )}%`
               }}
             ></div>
+
           </div>
 
         </div>
@@ -181,6 +189,7 @@ function StudyProgressPanel({ dashboard }) {
           <div className="card-header">
 
             <div>
+
               <h3>
                 Mastery Distribution
               </h3>
@@ -188,6 +197,7 @@ function StudyProgressPanel({ dashboard }) {
               <p>
                 Your concepts grouped by current mastery level.
               </p>
+
             </div>
 
           </div>
@@ -197,6 +207,7 @@ function StudyProgressPanel({ dashboard }) {
             <div className="mastery-distribution-item">
 
               <div className="mastery-distribution-top">
+
                 <span>
                   Needs Attention
                 </span>
@@ -204,9 +215,11 @@ function StudyProgressPanel({ dashboard }) {
                 <strong>
                   {masteryBuckets.weak}
                 </strong>
+
               </div>
 
               <div className="mastery-track">
+
                 <div
                   className="mastery-fill mastery-weak"
                   style={{
@@ -219,6 +232,7 @@ function StudyProgressPanel({ dashboard }) {
                       : '0%'
                   }}
                 ></div>
+
               </div>
 
               <small>
@@ -230,6 +244,7 @@ function StudyProgressPanel({ dashboard }) {
             <div className="mastery-distribution-item">
 
               <div className="mastery-distribution-top">
+
                 <span>
                   Developing
                 </span>
@@ -237,9 +252,11 @@ function StudyProgressPanel({ dashboard }) {
                 <strong>
                   {masteryBuckets.developing}
                 </strong>
+
               </div>
 
               <div className="mastery-track">
+
                 <div
                   className="mastery-fill mastery-developing"
                   style={{
@@ -252,6 +269,7 @@ function StudyProgressPanel({ dashboard }) {
                       : '0%'
                   }}
                 ></div>
+
               </div>
 
               <small>
@@ -263,6 +281,7 @@ function StudyProgressPanel({ dashboard }) {
             <div className="mastery-distribution-item">
 
               <div className="mastery-distribution-top">
+
                 <span>
                   Strong
                 </span>
@@ -270,9 +289,11 @@ function StudyProgressPanel({ dashboard }) {
                 <strong>
                   {masteryBuckets.strong}
                 </strong>
+
               </div>
 
               <div className="mastery-track">
+
                 <div
                   className="mastery-fill mastery-strong"
                   style={{
@@ -285,6 +306,7 @@ function StudyProgressPanel({ dashboard }) {
                       : '0%'
                   }}
                 ></div>
+
               </div>
 
               <small>
@@ -302,6 +324,7 @@ function StudyProgressPanel({ dashboard }) {
           <div className="card-header">
 
             <div>
+
               <h3>
                 Learning Status
               </h3>
@@ -309,6 +332,7 @@ function StudyProgressPanel({ dashboard }) {
               <p>
                 Overall interpretation of your current progress.
               </p>
+
             </div>
 
           </div>
@@ -320,6 +344,7 @@ function StudyProgressPanel({ dashboard }) {
             </div>
 
             <div>
+
               <strong>
                 {getMasteryLabel(averageMastery)}
               </strong>
@@ -327,6 +352,7 @@ function StudyProgressPanel({ dashboard }) {
               <p>
                 {getProgressMessage()}
               </p>
+
             </div>
 
           </div>
@@ -334,6 +360,7 @@ function StudyProgressPanel({ dashboard }) {
           <div className="learning-status-stats">
 
             <div>
+
               <span>
                 Weak Concepts
               </span>
@@ -341,9 +368,11 @@ function StudyProgressPanel({ dashboard }) {
               <strong>
                 {dashboard.weakConcepts || 0}
               </strong>
+
             </div>
 
             <div>
+
               <span>
                 Quiz Average
               </span>
@@ -351,6 +380,7 @@ function StudyProgressPanel({ dashboard }) {
               <strong>
                 {averageQuizScore.toFixed(0)}%
               </strong>
+
             </div>
 
           </div>
@@ -366,6 +396,7 @@ function StudyProgressPanel({ dashboard }) {
           <div className="card-header">
 
             <div>
+
               <h3>
                 Strongest Concepts
               </h3>
@@ -373,15 +404,19 @@ function StudyProgressPanel({ dashboard }) {
               <p>
                 Concepts where you currently perform best.
               </p>
+
             </div>
 
           </div>
 
           {strongestConcepts.length === 0 ? (
+
             <div className="empty-text">
               No concepts available yet.
             </div>
+
           ) : (
+
             <div className="concept-progress-list">
 
               {strongestConcepts.map((concept) => {
@@ -390,6 +425,7 @@ function StudyProgressPanel({ dashboard }) {
                   Number(concept.masteryLevel || 0)
 
                 return (
+
                   <div
                     className="concept-progress-item"
                     key={concept.id}
@@ -398,6 +434,7 @@ function StudyProgressPanel({ dashboard }) {
                     <div className="concept-progress-header">
 
                       <div>
+
                         <strong>
                           {concept.name}
                         </strong>
@@ -405,6 +442,7 @@ function StudyProgressPanel({ dashboard }) {
                         <span>
                           {concept.subject}
                         </span>
+
                       </div>
 
                       <b>
@@ -428,10 +466,12 @@ function StudyProgressPanel({ dashboard }) {
                     </div>
 
                   </div>
+
                 )
               })}
 
             </div>
+
           )}
 
         </div>
@@ -441,6 +481,7 @@ function StudyProgressPanel({ dashboard }) {
           <div className="card-header">
 
             <div>
+
               <h3>
                 Concepts to Revise
               </h3>
@@ -448,15 +489,19 @@ function StudyProgressPanel({ dashboard }) {
               <p>
                 Start your next revision session here.
               </p>
+
             </div>
 
           </div>
 
           {weakestConcepts.length === 0 ? (
+
             <div className="empty-text">
               No concepts available yet.
             </div>
+
           ) : (
+
             <div className="concept-progress-list">
 
               {weakestConcepts.map((concept) => {
@@ -465,6 +510,7 @@ function StudyProgressPanel({ dashboard }) {
                   Number(concept.masteryLevel || 0)
 
                 return (
+
                   <div
                     className="concept-progress-item"
                     key={concept.id}
@@ -473,6 +519,7 @@ function StudyProgressPanel({ dashboard }) {
                     <div className="concept-progress-header">
 
                       <div>
+
                         <strong>
                           {concept.name}
                         </strong>
@@ -480,6 +527,7 @@ function StudyProgressPanel({ dashboard }) {
                         <span>
                           {getMasteryLabel(mastery)}
                         </span>
+
                       </div>
 
                       <b>
@@ -503,10 +551,12 @@ function StudyProgressPanel({ dashboard }) {
                     </div>
 
                   </div>
+
                 )
               })}
 
             </div>
+
           )}
 
         </div>
@@ -518,6 +568,7 @@ function StudyProgressPanel({ dashboard }) {
         <div className="card-header">
 
           <div>
+
             <h3>
               Quiz Performance
             </h3>
@@ -525,15 +576,19 @@ function StudyProgressPanel({ dashboard }) {
             <p>
               Your performance across completed quizzes.
             </p>
+
           </div>
 
         </div>
 
         {quizResults.length === 0 ? (
+
           <div className="empty-text">
             Complete a quiz to see your performance here.
           </div>
+
         ) : (
+
           <div className="quiz-performance-list">
 
             {quizResults.map((quiz, index) => {
@@ -542,6 +597,7 @@ function StudyProgressPanel({ dashboard }) {
                 Number(quiz.score || 0)
 
               return (
+
                 <div
                   className="quiz-performance-item"
                   key={quiz.id || index}
@@ -550,6 +606,7 @@ function StudyProgressPanel({ dashboard }) {
                   <div className="quiz-performance-info">
 
                     <div>
+
                       <strong>
                         Quiz Attempt {index + 1}
                       </strong>
@@ -557,6 +614,7 @@ function StudyProgressPanel({ dashboard }) {
                       <span>
                         {quiz.subject}
                       </span>
+
                     </div>
 
                     <b>
@@ -585,10 +643,12 @@ function StudyProgressPanel({ dashboard }) {
                   </small>
 
                 </div>
+
               )
             })}
 
           </div>
+
         )}
 
       </div>

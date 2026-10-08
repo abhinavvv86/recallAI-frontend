@@ -1,3 +1,5 @@
+const API_URL = import.meta.env.VITE_API_URL || ''
+
 import { useEffect, useState } from 'react'
 import './App.css'
 import StudyMaterialPanel from './StudyMaterialPanel'
@@ -36,11 +38,14 @@ function App() {
     setDashboardLoading(true)
 
     try {
-      const response = await fetch('/api/dashboard', {
-        headers: {
-          Authorization: `Bearer ${token}`
+      const response = await fetch(
+        `${API_URL}/api/dashboard`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         }
-      })
+      )
 
       if (!response.ok) {
         throw new Error('Unable to load dashboard')
@@ -75,8 +80,8 @@ function App() {
 
     try {
       const endpoint = isLogin
-        ? '/auth/login'
-        : '/auth/register'
+        ? `${API_URL}/auth/login`
+        : `${API_URL}/auth/register`
 
       const body = isLogin
         ? {
@@ -220,6 +225,7 @@ function App() {
           ) : (
 
             <>
+
               {dashboardLoading ? (
 
                 <div className="dashboard-loading">
@@ -341,6 +347,7 @@ function App() {
                       <div className="card-header">
 
                         <div>
+
                           <h3>
                             Concept Mastery
                           </h3>
@@ -348,6 +355,7 @@ function App() {
                           <p>
                             Your current understanding of each concept
                           </p>
+
                         </div>
 
                       </div>
@@ -418,6 +426,7 @@ function App() {
                       <div className="card-header">
 
                         <div>
+
                           <h3>
                             Learning Overview
                           </h3>
@@ -425,6 +434,7 @@ function App() {
                           <p>
                             Your current learning status
                           </p>
+
                         </div>
 
                       </div>

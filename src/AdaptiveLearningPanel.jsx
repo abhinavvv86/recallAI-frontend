@@ -1,3 +1,5 @@
+const API_URL = import.meta.env.VITE_API_URL || ''
+
 import { useState } from 'react'
 
 function AdaptiveLearningPanel({ token, subject }) {
@@ -17,7 +19,7 @@ function AdaptiveLearningPanel({ token, subject }) {
 
     try {
       const response = await fetch(
-        `/api/adaptive-learning/${encodeURIComponent(subject)}`,
+        `${API_URL}/api/adaptive-learning/${encodeURIComponent(subject)}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -41,8 +43,7 @@ function AdaptiveLearningPanel({ token, subject }) {
     }
   }
 
-  const formattedStudyAction = studyAction
-    .replace(/\*\*/g, '')
+  const formattedStudyAction = studyAction.replace(/\*\*/g, '')
 
   return (
     <div className="adaptive-panel">

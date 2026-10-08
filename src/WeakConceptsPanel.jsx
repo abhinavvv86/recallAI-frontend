@@ -1,3 +1,5 @@
+const API_URL = import.meta.env.VITE_API_URL || ''
+
 import { useState } from 'react'
 
 function WeakConceptsPanel({ token, subject }) {
@@ -17,7 +19,7 @@ function WeakConceptsPanel({ token, subject }) {
 
     try {
       const response = await fetch(
-        `/api/mastery/weak/${encodeURIComponent(subject)}`,
+        `${API_URL}/api/mastery/weak/${encodeURIComponent(subject)}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -107,6 +109,7 @@ function WeakConceptsPanel({ token, subject }) {
 
       {loaded && weakConcepts.length === 0 && (
         <div className="weak-empty">
+
           <strong>
             Great job!
           </strong>
@@ -114,6 +117,7 @@ function WeakConceptsPanel({ token, subject }) {
           <p>
             You currently have no weak concepts for this subject.
           </p>
+
         </div>
       )}
 
@@ -130,6 +134,7 @@ function WeakConceptsPanel({ token, subject }) {
               <div className="weak-item-info">
 
                 <div>
+
                   <strong>
                     {concept.name}
                   </strong>
@@ -137,6 +142,7 @@ function WeakConceptsPanel({ token, subject }) {
                   <span>
                     {concept.description}
                   </span>
+
                 </div>
 
                 <b>

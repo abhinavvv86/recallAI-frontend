@@ -1,3 +1,5 @@
+const API_URL = import.meta.env.VITE_API_URL || ''
+
 import { useState } from 'react'
 
 function RecommendationPanel({ token, subject }) {
@@ -17,7 +19,7 @@ function RecommendationPanel({ token, subject }) {
 
     try {
       const response = await fetch(
-        `/api/recommendations/${encodeURIComponent(subject)}`,
+        `${API_URL}/api/recommendations/${encodeURIComponent(subject)}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
